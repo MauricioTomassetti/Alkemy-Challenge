@@ -7,6 +7,11 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create']]);
+    }
+
     public function index()
     {
         $posts = Post::latest()->get();
@@ -26,11 +31,13 @@ class PostController extends Controller
 
     public function store()
     {
+
         $path = request('image')->store('images');
 
         $post = Post::create($this->validatePost());
 
         $post->image = @end(explode('/', $path));
+
         $post->save();
 
         return redirect('/posts');
