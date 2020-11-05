@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="card border-secondary mb-3" style="max-width: 80rem;">
+        <div class="card-header">Editar post</div>
+        <div class="card-body">
     <form method="POST" action="{{route('posts.update', $post->id)}}" >
       @csrf
       @method('PATCH')
@@ -22,4 +25,6 @@
         <button type="submit" class="btn btn-primary">Actualizar Post</button>
       </form>
     </div>
+  </div>
+</div>
 @endsection
