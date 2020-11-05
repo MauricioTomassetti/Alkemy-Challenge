@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends ('home')
 
 @section ('content')
 <div class="container">
@@ -13,18 +13,30 @@
     </main>
     @forelse ($posts as $post)
     <div class="blog-post">
-        <h2 class="blog-post-title">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+        <h2 class="blog-post-title text-center">{{$post->title}}</h2>
+        <div class="container">
+        <div class="row">
+            <div class="col">
+                <img class="img-thumbnail" src="{{asset('/storage/' . $post->image)}}" alt="{{$post->title}}">
+            </div>
+            <div class="col">
+                <nav class="nav flex-column">
+                    <form method="POST" action="{{route('posts.destroy',$post->id)}}">
+                        <a class="nav-link active btn btn-lg btn-outline-primary mt-2" href="{{ $post->path() }}">Leer</a>
+                        <a class="nav-link  btn btn-lg btn-outline-warning mt-2" href="{{route('posts.edit',$post->id)}}">Actualizar</a>
+                        @csrf
+                       @method('DELETE')
+                        <button type="submit" class="btn btn-lg btn-outline-danger mr-2 mt-2" style="width:100%">Delete</button>
+                    </form>
+                </nav>
+            </div>
+        </div>
     </div>
-    <nav class="blog-pagination">
-        <a class="btn btn-outline-primary mr-2" href="#">Leer</a>
-        <a class="btn btn-outline-warning mr-2" href="#">Actualizar</a>
-        <a class="btn btn-outline-danger mr-2" href="#">Eliminar</a>
-    </nav>
+        <p class="blog-post-meta">{{$post->create_at}}</p>
+    </div>
     <hr>
     @empty
     <h2 class="blog-post-title">No hay posts para mostrar</h2>
     @endforelse
 </div>
 @endsection
-</div>
