@@ -1,9 +1,10 @@
-@extends('layout')
+@extends('home')
+
 @section('content')
-<div class="container">
-    <h1>
-        <h1>Recurso no encontrado</h2>
-            <h3> El codigo del error es: {{ $exception->getStatusCode() }}</h3>
-    </h1>
-</div>  
+<div class="error">
+	<h1 class="h1-404">{{ $exception->getStatusCode() }}</h1>
+	<p class="p-404">Quizas te has perdido</p>
+	<p class="smaller">El sitio que estas buscando no existe o no se encuentra disponible</p>
+	<a href="{{route('posts.index')}}"><div class="cta-button">Volver al inicio</div></a>
+</div>
 @endsection
