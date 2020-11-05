@@ -24,8 +24,8 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
-            'image' => $this->faker->image('public/images', 400, 300, null, false),
-            'category' => $this->faker->text,
+            'image' => $this->faker->image('public/storage/', 400, 300, null, false),
+            'category_id' => rand(1, 3),
         ];
     }
 }
