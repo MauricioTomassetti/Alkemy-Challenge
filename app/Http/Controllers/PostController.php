@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -36,11 +37,12 @@ class PostController extends Controller
 
         $post = Post::create($this->validatePost());
 
-        $post->image = @end(explode('/', $path));
+        // $post->image = @end(explode('/', $path));
+        $post->image = basename($path);
 
         $post->save();
 
-        return redirect('/posts');
+        return redirect()->route('posts.show', $post->id);
     }
 
     public function edit(Post $post)
@@ -60,7 +62,13 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        if ($post->image) {
+
+            Storage::delete('/images/' . $post->image);
+        }
+
         $post->delete();
+
         return redirect('posts');
     }
 
