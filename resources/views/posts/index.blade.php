@@ -26,7 +26,7 @@
                         <a class="nav-link  btn btn-lg btn-outline-warning mt-2" href="{{route('posts.edit',$post->id)}}">Actualizar</a>
                         @csrf
                        @method('DELETE')
-                        <button type="submit" class="btn btn-lg btn-outline-danger mr-2 mt-2" style="width:100%">Delete</button>
+                        <button type="submit" class="btn btn-lg btn-outline-danger mr-2 mt-2" style="width:100%">Eliminar</button>
                     </form>
                 </nav>
             </div>
