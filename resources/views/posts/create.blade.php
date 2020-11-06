@@ -26,8 +26,8 @@
                     @enderror
                 </div>
                 <div class="form-group @error('category') has-danger" @enderror>
-                    <label for="category">Seleccione una Categoria</label>
-                    <select name="category" class="form-control @error('category') is-invalid @enderror">
+                    <label for="category_id">Seleccione una Categoria</label>
+                    <select name="category_id" class="form-control @error('category') is-invalid @enderror">
                         @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach

@@ -77,7 +77,7 @@ class PostController extends Controller
         return request()->validate([
             'title' => 'required',
             'content' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'image' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
