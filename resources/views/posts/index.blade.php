@@ -15,23 +15,26 @@
     <div class="blog-post">
         <h2 class="blog-post-title text-center">{{$post->title}}</h2>
         <div class="container">
-        <div class="row">
-            <div class="col">
-                <img class="img-thumbnail" src="{{asset('/storage/' . $post->image)}}" alt="{{$post->title}}">
-            </div>
-            <div class="col">
-                <nav class="nav flex-column">
-                    <form method="POST" action="{{route('posts.destroy',$post->id)}}">
-                        <a class="nav-link active btn btn-lg btn-outline-primary mt-2" href="{{ $post->path() }}">Leer</a>
-                        <a class="nav-link  btn btn-lg btn-outline-warning mt-2" href="{{route('posts.edit',$post->id)}}">Actualizar</a>
-                        @csrf
-                       @method('DELETE')
-                        <button type="submit" class="btn btn-lg btn-outline-danger mr-2 mt-2" style="width:100%">Eliminar</button>
-                    </form>
-                </nav>
+            <div class="row">
+                <div class="col">
+                    <img class="img-thumbnail" src="{{asset('/storage/' . $post->image)}}" alt="{{$post->title}}">
+                </div>
+                <div class="col">
+                    <nav class="nav flex-column">
+                        <form method="POST" action="{{route('posts.destroy',$post->id)}}">
+                            <a class="nav-link active btn btn-lg btn-outline-primary mt-2"
+                                href="{{ $post->path() }}">Leer</a>
+                            <a class="nav-link  btn btn-lg btn-outline-warning mt-2"
+                                href="{{route('posts.edit',$post->id)}}">Actualizar</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-lg btn-outline-danger mr-2 mt-2"
+                                style="width:100%">Eliminar</button>
+                        </form>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
         <p class="blog-post-meta">{{$post->create_at}}</p>
     </div>
     <hr>
