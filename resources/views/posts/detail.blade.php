@@ -19,10 +19,10 @@
                     <footer class="blockquote-footer">Fecha de creacion: <cite
                             title="Date">{{$post->created_at->format('d/m/Y')}}</cite></footer>
                 </blockquote>
+                <a class="btn btn-primary" href="{{route('posts.index')}}">Volver al listado de posts</a>
             </div>
         </div>
         <p class="blog-post-meta">{{$post->create_at}}</p>
-
     </div>
 </div>
 @endsection
