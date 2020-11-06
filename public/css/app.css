@@ -12408,3 +12408,7 @@ select.form-control[multiple] {
   left: -10%;
 }
 
+body {
+  font-size: 1.1125rem;
+}
+
